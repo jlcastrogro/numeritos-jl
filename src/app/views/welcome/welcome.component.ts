@@ -25,7 +25,7 @@ export class WelcomeComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
 
-  registerer() {
+  redirecter() {
     console.log(this.user);
     if (this.user.testResults) {
       this.router.navigate(['/islands']);

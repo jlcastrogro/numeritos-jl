@@ -15,7 +15,7 @@
   min-width: 400px;
 }
 
-.container button[type='submit'] {
+.container button {
   width: 100%;
   max-width: 400px;
   background-image: none;
@@ -47,14 +47,14 @@
   color: white;
 }
 
-.container button[type='submit'] {
+.container button {
   border-radius: 10px;
   padding: 5px;
   font-family: Roboto, sans-serif;
   font-size: x-large;
 }
 
-.container button[type='submit'] {
+.container button {
   background-color: #032f55;
   vertical-align: middle;
   display: flex;
@@ -62,8 +62,8 @@
   cursor: pointer;
 }
 
-.container button[type='submit']:hover,
-.container button[type='submit']:focus {
+.container button:hover,
+.container button:focus {
   background-color: #032f88;
   box-shadow: 2px 2px #011f22;
 }

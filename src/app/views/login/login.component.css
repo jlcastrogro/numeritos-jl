@@ -1,0 +1,100 @@
+/*noinspection CssUnknownTarget*/
+.screen {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url('/assets/login/background.png') no-repeat fixed center;
+  background-size: cover;
+}
+
+.screen > div.floaters {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+  bottom: 0;
+}
+
+.form {
+  margin: auto;
+}
+
+.form input[type='text'],
+.form button[type='submit'] {
+  width: 100%;
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.form .icon {
+  display: inline-block;
+  height: 3em;
+  vertical-align: middle;
+  width: 3em;
+}
+
+.form .form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 14px;
+}
+
+.form label,
+.form input[type='text'],
+.form button[type='submit'] {
+  border-radius: 10px;
+  padding: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: x-large;
+}
+
+.form label {
+  background-color: rgba(1, 50, 1, 0.5);
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form input[type='text'] {
+  background-color: rgba(1, 50, 1, 0.4);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding-left: 10px;
+  color: #2d6921;
+}
+
+.form input[type='text']:focus,
+.form input[type='text']:hover {
+  background-color: rgba(1, 50, 1, 0.2);
+}
+
+.form button[type='submit'] {
+  background-color: #032f55;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.form button[type='submit']:hover,
+.form button[type='submit']:focus {
+  background-color: #032f88;
+  box-shadow: 2px 2px #011f22;
+}
+
+.form button img {
+  margin: auto;
+}

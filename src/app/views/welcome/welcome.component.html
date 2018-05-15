@@ -1,0 +1,14 @@
+<!--suppress HtmlUnknownTarget -->
+<div class="screen">
+  <div class="container" (submit)="loginHandler($event)" ngNativeValidate>
+    <div class="c-field">
+      <h1>¡ Hola <span class="red">{{user.alias}} !</span></h1>
+    </div>
+
+    <div class="c-field">
+      <button type="submit" (click)="registerer()">
+        <img src="/assets/playIcon.png">
+      </button>
+    </div>
+  </div>
+</div>

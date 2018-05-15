@@ -1,0 +1,131 @@
+/*noinspection CssUnknownTarget*/
+.screen {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url('/assets/register/background.png') no-repeat fixed center;
+  background-size: cover;
+}
+
+
+.screen > div.floaters {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+  bottom: 0;
+}
+
+.form {
+  margin: auto;
+  padding: 20px 40px;
+  background-color: rgba(1, 50, 1, 0.6);
+  border-radius: 20px;
+}
+
+.form input[type='text'],
+.form button[type='submit'] {
+  width: 100%;
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.form .icon {
+  display: inline-block;
+  height: 3em;
+  vertical-align: middle;
+  width: 3em;
+}
+
+.form .form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 14px;
+}
+
+.form .form-field.gender {
+  justify-content: space-around;
+}
+
+.form label,
+.form input[type='text'],
+.form button[type='submit'] {
+  border-radius: 10px;
+  padding: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: x-large;
+}
+
+.form label.textLabel {
+  background-color: rgba(200, 200, 200, 0.5);
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form input[type='text'] {
+  background-color: rgba(250, 250, 250, 0.5);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding-left: 10px;
+  color: #2d6921;
+}
+
+.form input[type='text']:focus,
+.form input[type='text']:hover {
+  background-color: rgba(250, 250, 250, 0.7);
+}
+
+.form button[type='submit'] {
+  background-color: #032f55;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.form button[type='submit']:hover,
+.form button[type='submit']:focus {
+  background-color: #032f88;
+  box-shadow: 2px 2px #011f22;
+}
+
+.form button img {
+  margin: auto;
+}
+
+.form .gender label > input[type='radio'] {
+  cursor: pointer;
+  visibility: hidden;
+  position: absolute;
+}
+
+.form .gender label > input[type='radio'] + img {
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border: 5px solid rgba(0, 0, 0, 0);
+}
+
+.form .gender label > input[type='radio']:hover + img {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.form .gender label > input[type='radio']:checked + img {
+  border: 5px solid rgba(0, 70, 0, 1);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+}

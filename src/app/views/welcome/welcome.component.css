@@ -1,0 +1,73 @@
+/*noinspection CssUnknownTarget*/
+.screen {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url('/assets/welcome/background.png') no-repeat fixed center;
+  background-size: cover;
+}
+
+.container {
+  margin: auto;
+  min-width: 400px;
+}
+
+.container button[type='submit'] {
+  width: 100%;
+  max-width: 400px;
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container .c-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-around;
+  margin: 14px;
+}
+
+.red {
+  color: #ff2140;
+}
+
+.container .c-field {
+  font-family: 'Gloria Hallelujah', Roboto, sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+.container button[type='submit'] {
+  border-radius: 10px;
+  padding: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: x-large;
+}
+
+.container button[type='submit'] {
+  background-color: #032f55;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.container button[type='submit']:hover,
+.container button[type='submit']:focus {
+  background-color: #032f88;
+  box-shadow: 2px 2px #011f22;
+}
+
+.container button img {
+  margin: auto;
+}

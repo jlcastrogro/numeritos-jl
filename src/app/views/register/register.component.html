@@ -1,0 +1,39 @@
+<!--suppress HTMLUnknownTarget -->
+<div class="screen">
+  <form class="form" (submit)="registerHandler($event)" ngNativeValidate>
+    <div class="form-field">
+      <label class="textLabel" for="username">
+        <img class="icon" src="/assets/userIcon.png">
+      </label>
+      <input id="username" type="text" name="username" autocomplete="off"
+             [(ngModel)]="name"
+             class="form__input" placeholder="Nombre" required autofocus
+             pattern="^[a-zA-ZÀ-ú]+(\s[a-zA-ZÀ-ú]+)*$" minlength="3"
+             title="Por favor, utiliza solamente letras y/o espacios">
+    </div>
+    <div class="form-field gender">
+      <label>
+        <input type="radio" name="gender" [(ngModel)]="gender" value="boy"
+               required>
+        <img src="/assets/boy.png">
+      </label>
+      <label>
+        <input type="radio" name="gender" [(ngModel)]="gender" value="girl"
+               required>
+        <img src="/assets/girl.png">
+      </label>
+    </div>
+
+    <div class="form-field">
+      <button type="submit">
+        <img src="/assets/playIcon.png">
+      </button>
+    </div>
+  </form>
+
+  <div class="floaters">
+    <a routerLink="/login"><img src="/assets/redBackArrow.png"></a>
+    <div></div>
+    <div></div>
+  </div>
+</div>

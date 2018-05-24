@@ -16,6 +16,7 @@ import {
   AuthService,
   UserGuard
 } from 'app/services';
+import { ExitButtonComponent } from 'app/components/exit-button/exit-button.component';
 
 const appRoutes: Routes = [
   {
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     IslandsComponent,
     LoginComponent,
     TestComponent,
-    AppComponent
+    AppComponent,
+    ExitButtonComponent
   ],
   imports: [
     BrowserModule,

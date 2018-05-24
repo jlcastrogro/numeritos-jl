@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
       _id: '',
       _rev: '',
       alias: '',
-      gender:''
+      gender: ''
     };
 
     this.auth.user
@@ -26,7 +26,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   redirecter() {
-    console.log(this.user);
     if (this.user.testResults) {
       this.router.navigate(['/islands']);
     } else {

@@ -6,10 +6,11 @@
         <img class="icon" src="/assets/userIcon.png">
       </label>
       <input id="username" type="text" name="username" autocomplete="off"
-             [(ngModel)]="name"
+             [(ngModel)]="name" #username
              class="form__input" placeholder="Nombre" required autofocus
              pattern="^[a-zA-ZÀ-ú]+(\s[a-zA-ZÀ-ú]+)*$" minlength="3"
              title="Por favor, utiliza solamente letras y/o espacios">
+             {{username.focus()}}
     </div>
 
     <div class="form-field">

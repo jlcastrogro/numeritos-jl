@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   name = '';
   gender = Math.random() < 0.5 ? 'boy' : 'girl';
+  userStatus = '';
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -35,12 +36,28 @@ export class RegisterComponent implements OnInit {
   registerHandler(evt: Event) {
     evt.preventDefault();
 
-    this.auth.register(this.name, this.gender)
+    this.auth.register(this.name.trim(), this.gender)
       .then(user =>
         this.auth.login(user.id)
           .then(() => this.router.navigate(['/welcome']))
           .catch(console.error)
       )
-      .catch(console.error);
+      .catch(error => {
+        if (error.status === 409) {
+          // Show dialog to say user already exists ?
+        }
+      });
+  }
+
+  /**
+   * TODO
+   */
+  checkUser() {
+    if (this.name.length > 2) {
+      this.auth.validUser(this.name.trim().toLowerCase())
+        .subscribe(v => this.userStatus = v ? '' : 'invalid');
+    } else {
+      this.userStatus = '';
+    }
   }
 }

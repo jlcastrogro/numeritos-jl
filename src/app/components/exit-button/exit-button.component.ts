@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from 'app/services';
 
 @Component({
   selector: 'app-exit-button',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExitButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  logout() {
+    this.auth.logout();
   }
-
 }

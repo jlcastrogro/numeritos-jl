@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router, RouterEvent} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 
 const loginRegex = /.*login.*/;
 const registerRegex = /.*register.*/;
@@ -24,11 +24,13 @@ export class AppComponent implements OnInit {
         } else if (welcomeRegex.test(evt.url)) {
           this.view = 'welcome';
         } else {
-          this.view = 'unknown'
+          this.view = 'unknown';
         }
 
         switch (this.view) {
-          case 'login': case 'register': case 'welcome':
+          case 'login':
+          case 'register':
+          case 'welcome':
             this.mainAudio.play();
             break;
           default:
@@ -39,11 +41,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.mainAudio = new Audio();
     this.mainAudio.src = '/assets/sounds/Curious comedy music.mp3';
     this.mainAudio.load();
     this.mainAudio.loop = true;
-    this.mainAudio.play();
   }
 }

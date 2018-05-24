@@ -26,11 +26,8 @@ export interface User {
 export class AuthService {
   db: any;
 
-  // session: Session; // Default: undefined
-
   constructor() {
     this.db = new PouchDB('app');
-    this.db.allDocs().then(console.log);
   }
 
   /**
@@ -40,7 +37,7 @@ export class AuthService {
    * @returns A promise that resolves if user was found.
    */
   login(name: string): Promise<User> {
-    return this.db.get(name)
+    return this.db.get(name.toLowerCase())
       .then(user => {
         const cad = +new Date() + sessionExpire;
         localStorage.setItem('expire', cad + '');
@@ -57,7 +54,7 @@ export class AuthService {
    */
   register(name: string, gender: string): Promise<any> {
     return this.db.put({
-      _id: name,
+      _id: name.toLowerCase(),
       alias: name.split(' ').shift(),
       gender: gender
     });
@@ -69,6 +66,20 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('expire');
+  }
+
+  validUser(user: string): Observable<boolean> {
+    return new Observable(observer => {
+      this.db.get(user)
+        .then(() => {
+          observer.next(false);
+          observer.complete();
+        })
+        .catch(() => {
+          observer.next(true);
+          observer.complete();
+        });
+    });
   }
 
   /**

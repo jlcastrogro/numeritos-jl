@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthService} from 'app/services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   name: '';
 
   constructor(private auth: AuthService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() { }
 
@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
   loginHandler(evt: Event) {
     evt.preventDefault();
 
-    this.auth.login(this.name)
+    this.auth.login(this.name.trim())
       .then(() => this.router.navigate(['/welcome']))
       .catch(error => {
         if (error.status === 404) {
           this.router.navigate(['/register'], {
-            queryParams: {name: this.name}
+            queryParams: { name: this.name }
           }).then(null);
         } else {
           console.error('What?', error);

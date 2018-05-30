@@ -1,0 +1,94 @@
+.game {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/testview/board.png') no-repeat center;
+}
+
+.game .field {
+  height: 433px;
+  width: 1064px;
+  padding: 0;
+  background: url('/assets/testview/countingBackground.png') no-repeat center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.game .field * {
+  margin: 0;
+  height: 100%;
+}
+
+.game .field .target {
+  height: 200px;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.game .field .target div {
+  background-color: yellow;
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+.game .field .options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.game .field .options div {
+  width: 207px;
+  height: 88px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/assets/shadowed_cloud.png') no-repeat center;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+.game .field .options div:hover {
+  color: #0ff;
+  background: url('/assets/cloud.png') no-repeat center;
+}
+
+.game .field .animals {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.game .field .animals div {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  margin-top: 25px;
+}
+
+.game .field .animals div img {
+  height: 50px;
+  width: auto;
+}
+
+.game img {
+  margin: auto;
+}
+
+.game .floaters {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  align-content: center;
+}

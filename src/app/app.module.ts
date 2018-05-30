@@ -17,6 +17,9 @@ import {
   UserGuard
 } from 'app/services';
 import { ExitButtonComponent } from 'app/components/exit-button/exit-button.component';
+import { CountingComponent } from './games/counting/counting.component';
+import { LogicalSerieComponent } from 'app/games/logical-serie/logical-serie.component';
+import { ShoppingComponent } from './games/shopping/shopping.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +35,10 @@ const appRoutes: Routes = [
   }, {
     path: 'test',
     component: TestComponent,
+    canActivate: [UserGuard]
+  }, {
+    path: 'islands',
+    component: IslandsComponent,
     canActivate: [UserGuard]
   }, {
     path: '',
@@ -52,7 +59,10 @@ const appRoutes: Routes = [
     LoginComponent,
     TestComponent,
     AppComponent,
-    ExitButtonComponent
+    ExitButtonComponent,
+    CountingComponent,
+    LogicalSerieComponent,
+    ShoppingComponent
   ],
   imports: [
     BrowserModule,

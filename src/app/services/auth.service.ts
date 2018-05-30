@@ -14,7 +14,9 @@ export interface User {
   // This app's requirements
   alias: string;
   gender: string;
-  testResults?: any;
+  testResults?: {
+    level: number;
+  };
 }
 
 /**
@@ -68,9 +70,13 @@ export class AuthService {
     localStorage.removeItem('expire');
   }
 
-  validUser(user: string): Observable<boolean> {
+  /**
+   * Checks if a given username already exists.
+   * @param username A string given to check if user has been taken.
+   */
+  validUser(username: string): Observable<boolean> {
     return new Observable(observer => {
-      this.db.get(user)
+      this.db.get(username)
         .then(() => {
           observer.next(false);
           observer.complete();
@@ -111,6 +117,14 @@ export class AuthService {
         observer.complete();
       }
     });
+  }
+
+  /**
+   * Updates the user with the information given.
+   * @param user New information about user.
+   */
+  updateUser(user: User): Promise<any> {
+    return this.db.put(user);
   }
 
   /**

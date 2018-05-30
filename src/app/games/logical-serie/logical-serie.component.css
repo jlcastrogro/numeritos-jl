@@ -1,0 +1,95 @@
+.game {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/testview/board.png') no-repeat center;
+}
+
+.game .field {
+  height: 433px;
+  width: 1064px;
+  padding: 0;
+  background: url('/assets/testview/logicalBackground.png') no-repeat center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.game .field .options {
+  margin-top: 20px;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.game .field .options > div {
+  margin: 30px;
+  height: 80px;
+  width: 80px;
+}
+
+.game .field .serie {
+  margin: 20px 0;
+  /* background: rgba(121, 85, 72, 0.5); */
+  background: rgba(255, 255, 255, 0.5);
+  /* border-radius: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game .field .serie > div {
+  padding: 10px;
+  margin: 10px;
+  height: 80px;
+  width: 80px;
+  cursor: move;
+  /* border-radius: 20%; */
+  border-width: 2px;
+  border-color: brown;
+  border: white 2px solid;
+  background: #fdf083;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game .field .btnContainer {
+  width: 1000px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.game .field .btnContainer button {
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  height: 75px;
+  background-color: #032f55;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.game .field .btnContainer button:hover,
+.game .field .btnContainer button:focus {
+  background-color: #032f88;
+  box-shadow: 2px 2px #011f22;
+}
+
+.game img {
+  margin: auto;
+}
+
+.game .floaters {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  align-content: center;
+}

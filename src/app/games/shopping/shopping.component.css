@@ -1,0 +1,88 @@
+.game {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/testview/board.png') no-repeat center;
+}
+
+.game .field {
+  height: 433px;
+  width: 1064px;
+  padding: 0;
+  background: url('/assets/testview/shoppingBackground.png') no-repeat center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.game .field > div {
+  margin: auto;
+  height: 90%;
+  width: 80%;
+}
+
+.game .field .gamezone {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game .field .gamezone > * {
+  width: 100%;
+  height: 100%;
+  /* margin-bottom: 20px; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game .field .gamezone .operator {
+  font-size: 100px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: gray;
+}
+
+.game .field .gamezone .textbox {
+  border: 3px grey solid;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border-radius: 10px; */
+  height: 120px;
+  padding: 3px;
+  width: 300px;
+  font-size: 100px;
+  background: #fff;
+}
+
+.game .field .gamezone .textbox input {
+  border: none;
+  font-size: 100px;
+  width: 200px;
+  height: 100%;
+  color: grey;
+  background: #fff;
+}
+
+.game .field .gamezone .textbox input:focus,
+.game .field .gamezone .textbox input:active {
+  border: none;
+}
+
+.game img {
+  margin: auto;
+}
+
+.game .floaters {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  align-content: center;
+}

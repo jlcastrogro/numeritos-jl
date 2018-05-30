@@ -8,7 +8,7 @@
 
 .screen div.floaters {
   position: absolute;
-  width: 100%;
+  width: 200px;
   display: flex;
   justify-content: left;
   z-index: 1;
@@ -26,7 +26,7 @@
   position: relative;
   width: 100%;
   height: 150px;
-  background: url('/assets/test/topBarBackground.png') no-repeat center;
+  background: url('/assets/testview/topBarBackground.png') no-repeat center;
   background-size: cover;
 }
 
@@ -51,11 +51,15 @@
 }
 
 .top-row div.coins-container > div div.completed {
-  background: #2c2;
+  background: #7cc623;
 }
 
-.top-row div.coins-container > div div.togo {
+.top-row div.coins-container > div div.incompleted {
   background: #999;
+}
+
+.top-row div.coins-container > div div.active {
+  background: yellow;
 }
 
 .top-row > app-exit-button {
@@ -84,12 +88,16 @@
   height: 60px;
 }
 
-.board-container {
+.games-container {
   display: flex;
   justify-content: center;
   height: calc(100% - 150px);
 }
 
-.board-border {
-  margin: auto;
+.games-container * {
+  width: 100%;
+}
+
+.superhide {
+  display: none;
 }

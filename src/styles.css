@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Gloria Hallelujah';
+  font-style: oblique;
+}
+
+.red-text {
+  color: #ff2140;
+}
+
+.blue-text {
+  color: #00d;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+

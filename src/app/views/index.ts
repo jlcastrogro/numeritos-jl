@@ -3,4 +3,4 @@ export * from './register/register.component';
 export * from './islands/islands.component';
 export * from './welcome/welcome.component';
 export * from './login/login.component';
-export * from './test/test.component';
+export * from './testview/test.component';

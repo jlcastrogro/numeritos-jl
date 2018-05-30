@@ -1,0 +1,34 @@
+<div class="game">
+  <div class="field">
+
+    <div class="options" (dragover)="$event.preventDefault()" (drop)="dropOnOption($event)">
+      <div *ngFor="let e of options" (dragstart)="dragFromOption($event)" draggable="true" [attr.value]="e.id">
+        <svg height="80" width="80" [attr.fill]="e.color">
+          <polygon *ngIf="e.name === 'triangle'" points="40,0 0,80 80,80" />
+          <polygon *ngIf="e.name === 'square'" points="0,0 0,80 80,80 80,0" />
+          <circle *ngIf="e.name === 'circle'" cx="40" cy="40" r="40" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="serie" (dragover)="allowDrop($event)">
+      <div *ngFor="let e of answer" (dragstart)="dragFromAnswer($event)" (drop)="dropOnAnswer($event)" draggable="true" [attr.value]="e ? e.id : ''">
+        <svg *ngIf="e" height="80" width="80" [attr.fill]="e.color">
+          <polygon *ngIf="e.name === 'triangle'" points="40,0 0,80 80,80" />
+          <polygon *ngIf="e.name === 'square'" points="0,0 0,80 80,80 80,0" />
+          <circle *ngIf="e.name === 'circle'" cx="40" cy="40" r="40" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="btnContainer">
+      <button (click)="submit()">
+        <img src="/assets/playIcon.png">
+      </button>
+    </div>
+  </div>
+
+  <div class="floaters" *ngIf="result !== undefined">
+    <img src="/assets/testview/veryGood.png" *ngIf="result">
+  </div>
+</div>

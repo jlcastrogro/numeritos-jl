@@ -1,0 +1,26 @@
+<div class="game">
+  <div class="field">
+    <div></div>
+    <div class="gamezone">
+      <div class="coins">
+        <img width="120" height="120" src="/assets/coins/{{ opA }}.png">
+        <div class="operator">+</div>
+        <img width="120" height="120" src="/assets/coins/{{ opB }}.png">
+      </div>
+
+      <div>
+        <div class="operator">=</div>
+        <span class="operator textbox">
+          $
+          <input (keypress)="submit($event)" autocomplete="off" type="text"
+            name="resInput" required autofocus [(ngModel)]="res" #resInput>
+            {{ resInput.focus() }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="floaters" *ngIf="result !== undefined">
+    <img src="/assets/testview/veryGood.png" *ngIf="result">
+  </div>
+</div>

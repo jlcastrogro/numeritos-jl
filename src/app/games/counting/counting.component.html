@@ -1,0 +1,22 @@
+<div class="game">
+  <div class="field">
+    <div class="target">
+      <div>
+        <img src="/assets/animals/{{ targetAnimal }}.png">
+      </div>
+    </div>
+    <div class="options">
+      <div *ngFor="let i of options" class="bold-text blue-text" (click)="select(i)">
+        {{ i }}
+      </div>
+    </div>
+    <div class="animals">
+      <div *ngFor="let a of animals">
+        <img *ngIf="a" src="/assets/animals/{{ a }}.png">
+      </div>
+    </div>
+  </div>
+  <div class="floaters" *ngIf="result !== undefined">
+    <img src="/assets/testview/veryGood.png" *ngIf="result">
+  </div>
+</div>

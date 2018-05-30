@@ -19,11 +19,16 @@ export class CountingComponent implements OnInit {
   targetAnimal = 'unknown';
   xAnimal = 'unknown';
   answer = 0;
-  result;
+  result: boolean;
+  mainAudio;
 
   constructor() {}
 
   ngOnInit() {
+    this.mainAudio = new Audio();
+    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
+    this.mainAudio.load();
+
     this.selectAnimals();
     this.distributeAnimals();
     // Filling available options
@@ -75,7 +80,10 @@ export class CountingComponent implements OnInit {
    * @param i The value of the answer clicked.
    */
   select(i) {
-    this.passed.emit(this.result = i === this.answer);
+    if (this.result = i === this.answer) {
+      this.mainAudio.play();
+    }
+    this.passed.emit(this.result);
   }
 }
 

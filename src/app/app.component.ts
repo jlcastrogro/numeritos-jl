@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         switch (this.view) {
           case 'login':
           case 'register':
-          case 'welcome':
+          // case 'welcome':
             this.mainAudio.play();
             break;
           default:

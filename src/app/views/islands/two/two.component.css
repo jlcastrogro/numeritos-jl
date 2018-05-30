@@ -43,31 +43,72 @@
   height: 60px;
 }
 
-.islands-container {
+.games-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
   align-items: center;
-  background: url('/assets/sea.png') no-repeat center;
+  background: url('/assets/b1.png') no-repeat center;
   background-size: cover;
   height: calc(100% - 150px);
 }
 
-.islands-container > div {
+.games-container > div {
   display: flex;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: auto 10px;
+  width: 30%;
+  height: 200px;
+  margin: 0 5%;
 }
 
-.islands-container > div:hover {
-  background: rgba(255, 255, 255, 0.3);
+.games-container > div > div:first-child {
+  display: flex;
+  justify-content: center;
+  border: 10px rgba(0, 0, 0, 0.7) solid;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  width: 100%;
+  height: 70%;
 }
 
-.islands-container > img {
+.unlocked {
+  cursor: pointer;
+}
+
+.games-container > div > div:first-child img {
+  height: 100%;
+  width: auto;
+}
+
+.games-container > div > div:last-child {
+  display: flex;
+  justify-content: center;
+}
+
+.games-container > div > div:last-child img {
+  margin: 3px;
+  height: 30px;
+  width: auto;
+}
+
+.games-container > img {
   height: 100px;
   width: 100px;
+}
+
+.screen > div.floaters {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.screen > div.floaters {
+  height: 100%;
 }

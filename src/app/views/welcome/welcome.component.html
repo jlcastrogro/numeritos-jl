@@ -2,13 +2,17 @@
 <div class="screen">
   <div class="container">
     <div class="c-field">
-      <h1>¡ Hola <span class="red-text">{{user.alias}} !</span></h1>
+      <h1>¡ Hola
+        <span class="red-text">{{user.alias}} !</span>
+      </h1>
     </div>
 
     <div class="c-field">
-      <button (click)="redirecter()">
-        <img src="/assets/playIcon.png">
-      </button>
+      <a href="/test">
+        <button>
+          <img src="/assets/playIcon.png">
+        </button>
+      </a>
     </div>
   </div>
 </div>

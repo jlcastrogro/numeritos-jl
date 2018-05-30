@@ -14,9 +14,10 @@ export interface User {
   // This app's requirements
   alias: string;
   gender: string;
-  testResults?: {
-    level: number;
-  };
+  level?: number;
+  islands: {
+    stars: number[];
+  }[];
 }
 
 /**
@@ -58,7 +59,14 @@ export class AuthService {
     return this.db.put({
       _id: name.toLowerCase(),
       alias: name.split(' ').shift(),
-      gender: gender
+      gender: gender,
+      islands: [{
+        stars: [0, 0, 0, 0]
+      }, {
+        stars: [0, 0, 0, 0]
+      }, {
+        stars: [0, 0, 0, 0]
+      }]
     });
   }
 

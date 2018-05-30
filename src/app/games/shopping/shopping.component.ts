@@ -13,10 +13,15 @@ export class ShoppingComponent implements OnInit {
   opB = 1;
   res = '';
   result: boolean;
+  mainAudio;
 
   constructor() { }
 
   ngOnInit() {
+    this.mainAudio = new Audio();
+    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
+    this.mainAudio.load();
+
     this.opA = coins[randInt(coins.length)];
     this.opB = coins[randInt(coins.length)];
     this.res = '';
@@ -25,8 +30,10 @@ export class ShoppingComponent implements OnInit {
   submit(evt: KeyboardEvent) {
     if (evt.key === 'Enter') {
       evt.preventDefault();
-      // this.result = Number(this.res) === (this.opA + this.opB);
-      this.passed.emit(this.result = Number(this.res) === (this.opA + this.opB));
+      if (this.result = Number(this.res) === (this.opA + this.opB)) {
+        this.mainAudio.play();
+      }
+      this.passed.emit(this.result);
     }
   }
 }

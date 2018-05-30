@@ -10,10 +10,9 @@ import { AuthService } from 'app/services/auth.service';
 export class LoginComponent implements OnInit {
   name: '';
 
-  constructor(private auth: AuthService,
-    private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   /**
    * Tries to log the user in. Successful login redirects to welcome view,
@@ -23,13 +22,16 @@ export class LoginComponent implements OnInit {
   loginHandler(evt: Event) {
     evt.preventDefault();
 
-    this.auth.login(this.name.trim())
+    this.auth
+      .login(this.name.trim())
       .then(() => this.router.navigate(['/welcome']))
       .catch(error => {
         if (error.status === 404) {
-          this.router.navigate(['/register'], {
-            queryParams: { name: this.name }
-          }).then(null);
+          this.router
+            .navigate(['/register'], {
+              queryParams: { name: this.name }
+            })
+            .then(null);
         } else {
           console.error('What?', error);
         }

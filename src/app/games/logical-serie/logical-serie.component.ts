@@ -22,10 +22,14 @@ export class LogicalSerieComponent implements OnInit {
   answer: Figure[] = [];
   options: Figure[] = [];
   result: boolean;
+  mainAudio;
 
   constructor() {}
 
   ngOnInit() {
+    this.mainAudio = new Audio();
+    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
+    this.mainAudio.load();
     // Generates a logical serie
     for (let i = 0; i < 3; i++) {
       this.serie.push({
@@ -51,6 +55,12 @@ export class LogicalSerieComponent implements OnInit {
         this.answer.push(undefined);
       }
     }
+
+    this.options.push({
+      id: this.serie.length,
+      name: this.serie[this.serie.length % 3].name,
+      color: this.serie[this.serie.length % 3].color
+    });
     // Sorts options to answer it randomly
     this.options.sort(() => Math.random() - 0.5);
   }
@@ -137,12 +147,13 @@ export class LogicalSerieComponent implements OnInit {
         this.serie[i].name !== this.answer[i].name ||
         this.serie[i].color !== this.answer[i].color
       ) {
-        this.passed.emit(this.result = false);
+        this.passed.emit((this.result = false));
         return;
       }
     }
 
-    this.passed.emit(this.result = true);
+    this.mainAudio.play();
+    this.passed.emit((this.result = true));
     return;
   }
 }

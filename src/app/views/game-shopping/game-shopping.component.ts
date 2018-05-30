@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, User } from 'app/services/auth.service';
+import { User, AuthService } from 'app/services/auth.service';
 
 interface Game {
   id: number;
@@ -11,11 +11,11 @@ interface Game {
 }
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  selector: 'app-game-shopping',
+  templateUrl: './game-shopping.component.html',
+  styleUrls: ['./game-shopping.component.css']
 })
-export class TestComponent implements OnInit {
+export class GameShoppingComponent implements OnInit {
   games: Game[] = [];
   current = 0;
   user: User;
@@ -48,7 +48,7 @@ export class TestComponent implements OnInit {
         id: i,
         html: <HTMLElement>gamesElements[i],
         active: false,
-        unlocked: false,
+        unlocked: true,
         result: undefined
       };
       game.html.style.display = i === 0 ? 'block' : 'none';
@@ -56,27 +56,6 @@ export class TestComponent implements OnInit {
     }
 
     this.current = 0;
-    this.unlockNextBlock();
-  }
-
-  /**
-   * Unlocks games two by two until it reach 6.
-   */
-  unlockNextBlock() {
-    let i = 0;
-    this.games.forEach(e => (i += e.result ? 1 : 0));
-
-    if (this.current < this.games.length && i === this.current) {
-      this.games[this.current].active = true;
-      this.games[this.current].unlocked = true;
-      this.games[this.current + 1].active = false;
-      this.games[this.current + 1].unlocked = true;
-    } else {
-      this.user.level = Math.floor(i / 2) + 1;
-      this.auth
-        .updateUser(this.user)
-        .then(() => this.router.navigate(['/islands']));
-    }
   }
 
   /**
@@ -112,11 +91,14 @@ export class TestComponent implements OnInit {
   nextGame() {
     this.games[this.current].html.style.display = 'none';
     this.games[this.current++].active = false;
-    if (this.current % 2 === 0) {
-      this.unlockNextBlock();
-    }
     if (this.current < this.games.length) {
       this.games[this.current].html.style.display = 'block';
+    } else {
+      let result = 0;
+      this.games.forEach(e => (e.result ? result++ : null));
+      this.user.islands[0].stars[0] = result;
+      this.auth.updateUser(this.user);
+      this.router.navigate(['/island/3']);
     }
   }
 }

@@ -8,8 +8,9 @@ import { User, AuthService } from 'app/services/auth.service';
 })
 export class IslandsComponent implements OnInit {
   user: User;
+  islands: any;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
     this.user = {
@@ -20,6 +21,22 @@ export class IslandsComponent implements OnInit {
       islands: []
     };
 
-    this.auth.user.subscribe(u => this.user = u);
+    this.islands = [[], [], []];
+
+    this.auth.user.subscribe(u => {
+      this.user = u;
+      console.log(u);
+      this.islands = [];
+      for (const i of u.islands) {
+        const island = [];
+
+        for (const s of i.stars) {
+          island.push(s === 3);
+        }
+
+        this.islands.push(island);
+      }
+      console.log(this.islands);
+    });
   }
 }

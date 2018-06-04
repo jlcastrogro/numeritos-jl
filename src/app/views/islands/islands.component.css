@@ -67,6 +67,25 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
+.islands-container .coins {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.islands-container .coins div {
+  height: 30px;
+  width: 30px;
+  background: grey;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.islands-container .coins div.completed {
+  background: yellow;
+}
+
 .islands-container > img {
   height: 100px;
   width: 100px;

@@ -24,9 +24,9 @@ export class ThreeComponent implements OnInit {
 
     this.auth.user.subscribe(u => {
       this.user = u;
-      for (let i = 0; i < this.user.islands[0].stars.length; i++) {
+      for (let i = 0; i < this.user.islands[2].stars.length; i++) {
         for (let j = 0; j < 3; j++) {
-          if (this.user.islands[0].stars[i] > j) {
+          if (this.user.islands[2].stars[i] > j) {
             this.stars[i].push('gold');
           } else {
             this.stars[i].push('silver');

@@ -96,7 +96,7 @@ export class GameLogicalComponent implements OnInit {
     } else {
       let result = 0;
       this.games.forEach(e => (e.result ? result++ : null));
-      this.user.islands[0].stars[0] = result;
+      this.user.islands[1].stars[0] = result;
       this.auth.updateUser(this.user);
       this.router.navigate(['/island/2']);
     }

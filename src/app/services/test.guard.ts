@@ -16,15 +16,21 @@ export class TestGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return new Observable<boolean>(observer => {
-      this.auth.user.subscribe(user => {
-        if (user.level) {
+      this.auth.user.subscribe(
+        user => {
+          if (user.level) {
+            observer.next(false);
+            this.router.navigate(['./islands']);
+          } else {
+            observer.next(true);
+          }
+          observer.complete();
+        },
+        () => {
           observer.next(false);
           this.router.navigate(['./islands']);
-        } else {
-          observer.next(true);
         }
-        observer.complete();
-      });
+      );
     });
   }
 }

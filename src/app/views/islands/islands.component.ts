@@ -25,7 +25,6 @@ export class IslandsComponent implements OnInit {
 
     this.auth.user.subscribe(u => {
       this.user = u;
-      console.log(u);
       this.islands = [];
       for (const i of u.islands) {
         const island = [];
@@ -36,7 +35,6 @@ export class IslandsComponent implements OnInit {
 
         this.islands.push(island);
       }
-      console.log(this.islands);
     });
   }
 }

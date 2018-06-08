@@ -17,15 +17,19 @@ import { UserGuard } from 'app/services/user.guard';
 import { TestGuard } from 'app/services/test.guard';
 import { IslandsGuard } from 'app/services/islands.guard';
 import { ExitButtonComponent } from 'app/components/exit-button/exit-button.component';
-import { CountingComponent } from './games/counting/counting.component';
-import { LogicalSerieComponent } from 'app/games/logical-serie/logical-serie.component';
-import { ShoppingComponent } from './games/shopping/shopping.component';
+import { CountingGame } from './games/counting/counting.component';
+import { LogicalSerieGame } from 'app/games/logical-serie/logical-serie.component';
+import { ShoppingGame } from './games/shopping/shopping.component';
 import { OneComponent } from 'app/views/islands/one/one.component';
 import { TwoComponent } from 'app/views/islands/two/two.component';
 import { ThreeComponent } from 'app/views/islands/three/three.component';
 import { GameShoppingComponent } from './views/game-shopping/game-shopping.component';
 import { GameCountingComponent } from './views/game-counting/game-counting.component';
 import { GameLogicalComponent } from './views/game-logical/game-logical.component';
+import { GameTemplate } from './games/template/template.component';
+import { GameService } from './services/game.service';
+import { GameContainerComponent } from './components/game-container/game-container.component';
+import { GameDirective } from './directives/game.directive';
 
 const appRoutes: Routes = [
   {
@@ -102,18 +106,22 @@ const appRoutes: Routes = [
     TestComponent,
     AppComponent,
     ExitButtonComponent,
-    CountingComponent,
-    LogicalSerieComponent,
-    ShoppingComponent,
+    CountingGame,
+    LogicalSerieGame,
+    ShoppingGame,
     OneComponent,
     TwoComponent,
     ThreeComponent,
     GameShoppingComponent,
     GameCountingComponent,
-    GameLogicalComponent
+    GameLogicalComponent,
+    GameTemplate,
+    GameContainerComponent,
+    GameDirective
   ],
+  entryComponents: [GameTemplate, CountingGame, LogicalSerieGame, ShoppingGame],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
-  providers: [AuthService, UserGuard, TestGuard],
+  providers: [AuthService, UserGuard, TestGuard, GameService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

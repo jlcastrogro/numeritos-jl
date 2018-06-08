@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { isNumber } from 'util';
+import { GameTemplate } from 'app/games/template/template.component';
 
 interface Figure {
   id: number;
@@ -16,20 +17,17 @@ const colors = ['purple', 'blue', 'red', 'green', 'brown'];
   templateUrl: './logical-serie.component.html',
   styleUrls: ['./logical-serie.component.css']
 })
-export class LogicalSerieComponent implements OnInit {
-  @Output() passed = new EventEmitter<boolean>();
+export class LogicalSerieGame extends GameTemplate implements OnInit {
   serie: Figure[] = [];
   answer: Figure[] = [];
   options: Figure[] = [];
-  result: boolean;
-  mainAudio;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
-    this.mainAudio = new Audio();
-    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
-    this.mainAudio.load();
+    super.ngOnInit();
     // Generates a logical serie
     for (let i = 0; i < 3; i++) {
       this.serie.push({
@@ -147,14 +145,14 @@ export class LogicalSerieComponent implements OnInit {
         this.serie[i].name !== this.answer[i].name ||
         this.serie[i].color !== this.answer[i].color
       ) {
-        this.passed.emit((this.result = false));
+        this.passed = false;
+        this.report();
         return;
       }
     }
 
-    this.mainAudio.play();
-    this.passed.emit((this.result = true));
-    return;
+    this.passed = true;
+    this.report();
   }
 }
 

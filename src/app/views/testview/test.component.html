@@ -6,18 +6,13 @@
     </div>
     <div class="coins-container">
       <div>
-        <div *ngFor="let game of games" class="{{ getClasses(game) }}"></div>
+        <!-- <div *ngFor="let game of games" class="{{ getClasses(game) }}"></div> -->
       </div>
     </div>
     <app-exit-button></app-exit-button>
   </div>
   <div class="games-container">
-    <app-counting (passed)="gameEvent($event)"></app-counting>
-    <app-counting (passed)="gameEvent($event)"></app-counting>
-    <app-logical-serie (passed)="gameEvent($event)"></app-logical-serie>
-    <app-logical-serie (passed)="gameEvent($event)"></app-logical-serie>
-    <app-shopping (passed)="gameEvent($event)"></app-shopping>
-    <app-shopping (passed)="gameEvent($event)"></app-shopping>
+    <game-container (result)="passed($event)" [gameItem]="game"></game-container>
   </div>
 
   <div class="floaters">

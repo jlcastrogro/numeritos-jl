@@ -3,32 +3,43 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+// Main component
 import { AppComponent } from 'app/app.component';
+// Views
 import {
   PageNotFoundComponent,
   RegisterComponent,
   IslandsComponent,
   WelcomeComponent,
   LoginComponent,
-  TestComponent
+  InitialTestView
 } from 'app/views';
-import { AuthService } from 'app/services/auth.service';
-import { UserGuard } from 'app/services/user.guard';
-import { TestGuard } from 'app/services/test.guard';
-import { IslandsGuard } from 'app/services/islands.guard';
-import { ExitButtonComponent } from 'app/components/exit-button/exit-button.component';
-import { CountingGame } from './games/counting/counting.component';
-import { LogicalSerieGame } from 'app/games/logical-serie/logical-serie.component';
-import { ShoppingGame } from './games/shopping/shopping.component';
+// Components
+import {
+  ExitButtonComponent,
+  GameContainerComponent
+} from 'app/components';
+// Services
+import { AuthService } from 'app/services';
+// Guards
+import {
+  UserGuard,
+  TestGuard,
+  IslandsGuard
+} from 'app/services';
+// Games
+import {
+  CountingGame,
+  LogicalSerieGame,
+  ShoppingGame
+} from 'app/games';
 import { OneComponent } from 'app/views/islands/one/one.component';
 import { TwoComponent } from 'app/views/islands/two/two.component';
 import { ThreeComponent } from 'app/views/islands/three/three.component';
 import { GameShoppingComponent } from './views/game-shopping/game-shopping.component';
 import { GameCountingComponent } from './views/game-counting/game-counting.component';
 import { GameLogicalComponent } from './views/game-logical/game-logical.component';
-import { GameTemplate } from './games/template/template.component';
-import { GameService } from './services/game.service';
-import { GameContainerComponent } from './components/game-container/game-container.component';
+import { GameTemplate } from 'app/games/template/template.component';
 import { GameDirective } from './directives/game.directive';
 
 const appRoutes: Routes = [
@@ -47,7 +58,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'test',
-    component: TestComponent,
+    component: InitialTestView,
     canActivate: [TestGuard]
   },
   {
@@ -103,7 +114,6 @@ const appRoutes: Routes = [
     WelcomeComponent,
     IslandsComponent,
     LoginComponent,
-    TestComponent,
     AppComponent,
     ExitButtonComponent,
     CountingGame,
@@ -117,11 +127,12 @@ const appRoutes: Routes = [
     GameLogicalComponent,
     GameTemplate,
     GameContainerComponent,
-    GameDirective
+    GameDirective,
+    InitialTestView
   ],
   entryComponents: [GameTemplate, CountingGame, LogicalSerieGame, ShoppingGame],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
-  providers: [AuthService, UserGuard, TestGuard, GameService],
+  providers: [AuthService, UserGuard, TestGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

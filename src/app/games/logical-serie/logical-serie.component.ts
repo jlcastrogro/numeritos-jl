@@ -12,6 +12,10 @@ const serieLength = 8;
 const figures = ['triangle', 'circle', 'square'];
 const colors = ['purple', 'blue', 'red', 'green', 'brown'];
 
+/**
+ * The goal in this game is to select the next three possible elements in the
+ * serie shown.
+ */
 @Component({
   selector: 'app-logical-serie',
   templateUrl: './logical-serie.component.html',
@@ -27,7 +31,6 @@ export class LogicalSerieGame extends GameTemplate implements OnInit {
   }
 
   ngOnInit() {
-    super.ngOnInit();
     // Generates a logical serie
     for (let i = 0; i < 3; i++) {
       this.serie.push({
@@ -138,6 +141,9 @@ export class LogicalSerieGame extends GameTemplate implements OnInit {
     evt.preventDefault();
   }
 
+  /**
+   * Checks the result and reports the answer.
+   */
   submit() {
     for (let i = 0; i < this.serie.length; i++) {
       if (

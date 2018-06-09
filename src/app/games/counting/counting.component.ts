@@ -8,6 +8,11 @@ const maxAnimals = 16;
 // Defines the total number of options
 const totalOptions = 3;
 
+/**
+ * The goal of this game is to count animals. The animal to count gets selected
+ * randomly from animals. The number of animals on the game also gets calculated
+ * randomly.
+ */
 @Component({
   selector: 'app-counting',
   templateUrl: './counting.component.html',
@@ -25,8 +30,6 @@ export class CountingGame extends GameTemplate implements OnInit {
   }
 
   ngOnInit() {
-    super.ngOnInit();
-
     this.selectAnimals();
     this.distributeAnimals();
     // Filling available options
@@ -73,8 +76,7 @@ export class CountingGame extends GameTemplate implements OnInit {
   }
 
   /**
-   * Triggers when an answer is clicked. It emits a notification to parent
-   * component with the result of the game (true if passed, false otherwise).
+   * Triggers when an answer is clicked/selected. Reports the result.
    * @param i The value of the answer clicked.
    */
   select(i) {

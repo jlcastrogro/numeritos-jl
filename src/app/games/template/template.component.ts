@@ -1,27 +1,28 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Type } from '@angular/core';
 
+/**
+ * All games must inherit from this. This will be the template for every game.
+ */
 @Component({
   selector: 'game-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })
-export class GameTemplate implements OnInit {
+export class GameTemplate {
   @Output() result = new EventEmitter<boolean>();
-  correctAnswer = new Audio();
   passed: boolean = false;
+  reported: boolean = false;
 
   constructor() { }
 
-  ngOnInit() {
-    this.correctAnswer.src = '/assets/sounds/Correct answer.mp3';
-    this.correctAnswer.load();
-  }
-
+  /**
+   * Reports the result of this game. Result must be saved in this.passed.
+   */
   report() {
-    if (this.passed) {
-      this.correctAnswer.play();
+    // Prevents it gets reported twice
+    if (!this.reported) {
+      this.result.emit(this.passed);
+      this.reported = true;
     }
-
-    this.result.emit(this.passed);
   }
 }

@@ -19,13 +19,15 @@ export class ShoppingGame extends GameTemplate implements OnInit {
    }
 
   ngOnInit() {
-    super.ngOnInit();
-
     this.opA = coins[randInt(coins.length)];
     this.opB = coins[randInt(coins.length)];
     this.res = '';
    }
 
+   /**
+    * Checks answer correctness and reports the result.
+    * @param evt A keyboard event to check result.
+    */
   submit(evt: KeyboardEvent) {
     if (evt.key === 'Enter') {
       evt.preventDefault();

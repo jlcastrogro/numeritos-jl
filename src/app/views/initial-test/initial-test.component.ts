@@ -16,6 +16,10 @@ interface Game {
   unlocked: boolean;
 }
 
+/**
+ * Initial test will only execute one time per user. It will determine which
+ * islands are appropiate for the user.
+ */
 @Component({
   selector: 'initial-test',
   templateUrl: './initial-test.component.html',
@@ -58,7 +62,7 @@ export class InitialTestView implements OnInit {
   passed(result: boolean) {
     this.games[this.current].data.result = result;
 
-    if (this.current < this.games.length) {
+    if (this.current + 1 < this.games.length) {
       // Checks if its even
       if (this.current & 1) {
         if (
@@ -88,11 +92,12 @@ export class InitialTestView implements OnInit {
   finishGames() {
     let correctAnswers = 0;
     for (let game of this.games) {
-      correctAnswers += game.data.result ? 1 : 0;
+      game.data.result ? correctAnswers++ : null;
     }
-    this.user.level = Math.floor(correctAnswers / 2);
-    // TODO: Update user!
-    // console.log(this.user.level);
+    correctAnswers >>= 1;
+    this.user.level = correctAnswers ? correctAnswers : 1;
+    this.auth.updateUser(this.user);
+    this.router.navigate(['/islands']);
   }
 
   /**

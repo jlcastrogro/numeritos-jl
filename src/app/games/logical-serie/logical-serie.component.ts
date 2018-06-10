@@ -59,8 +59,8 @@ export class LogicalSerieGame extends GameTemplate implements OnInit {
 
     this.options.push({
       id: this.serie.length,
-      name: this.serie[this.serie.length % 3].name,
-      color: this.serie[this.serie.length % 3].color
+      name: figures[randInt(figures.length)],
+      color: colors[randInt(colors.length)]
     });
     // Sorts options to answer it randomly
     this.options.sort(() => Math.random() - 0.5);
@@ -167,6 +167,7 @@ export class LogicalSerieGame extends GameTemplate implements OnInit {
  * @param a If b is not provided then a becomes upper bound: [0, a). If b is
  * provided then bounds will be [a, b).
  * @param b Defines upper bound for this.
+ * @returns A random integer in range.
  */
 function randInt(a: number, b?: number): number {
   if (b === undefined) {

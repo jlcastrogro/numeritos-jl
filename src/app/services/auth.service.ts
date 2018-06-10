@@ -15,6 +15,7 @@ export interface User {
   alias: string;
   gender: string;
   level?: number;
+  lastLevel?: number;
   islands: {
     stars: number[];
   }[];

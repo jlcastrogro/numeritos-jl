@@ -8,14 +8,12 @@
   </div>
   <div class="islands-container">
     <div>
-      <a *ngIf="user.level >= 1" href="/island/1">
+      <a *ngIf="user.level >= 1" routerLink="/islands/forest">
         <img src="/assets/island1.png">
       </a>
       <img *ngIf="user.level < 1" src="/assets/locked_island1.png">
       <div class="coins">
-        <div *ngFor="let i of islands[0]" class="{{i ? 'completed' : ''}}">
-
-        </div>
+        <div *ngFor="let i of islands[0]" class="{{i ? 'completed' : ''}}"></div>
       </div>
     </div>
     <img src="/assets/path1.png">
@@ -42,5 +40,9 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="unlockedRecently" class="floaters">
+    <img src="/assets/unlocked{{unlockedRecently}}.png">
   </div>
 </div>

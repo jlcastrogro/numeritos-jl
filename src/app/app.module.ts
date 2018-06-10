@@ -41,6 +41,9 @@ import { GameCountingComponent } from './views/game-counting/game-counting.compo
 import { GameLogicalComponent } from './views/game-logical/game-logical.component';
 import { GameTemplate } from 'app/games/template/template.component';
 import { GameDirective } from './directives/game.directive';
+import { BeachComponent } from './views/islands/beach/beach.component';
+import { ForestComponent } from './views/islands/forest/forest.component';
+import { CityComponent } from './views/islands/city/city.component';
 
 const appRoutes: Routes = [
   {
@@ -128,7 +131,10 @@ const appRoutes: Routes = [
     GameTemplate,
     GameContainerComponent,
     GameDirective,
-    InitialTestView
+    InitialTestView,
+    BeachComponent,
+    ForestComponent,
+    CityComponent
   ],
   entryComponents: [GameTemplate, CountingGame, LogicalSerieGame, ShoppingGame],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],

@@ -1,0 +1,20 @@
+<div class="game">
+  <div class="field">
+    <img src="/assets/trophy.png">
+    <div class="gamezone">
+      <div>
+        <h1>¡ Muy bien
+          <span class="red-text">{{username}}</span> !</h1>
+      </div>
+      <div class="stars">
+        <img *ngFor="let star of stars"
+             src="/assets/{{star ? 'gold' : 'silver'}}Star.png">
+      </div>
+      <div class="buttons">
+        <button (click)="submit(false)">
+          <img src="/assets/playIcon.png">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

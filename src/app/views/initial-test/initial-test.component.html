@@ -1,0 +1,22 @@
+<div class="screen">
+  <div class="top-row">
+    <div class="user-container">
+      <img src="/assets/{{user.gender}}.png">
+      <span>{{user.alias}}</span>
+    </div>
+    <div class="coins-container">
+      <div>
+        <div *ngFor="let e of games" class="{{ determineClass(e.data).join(' ') }}">
+        </div>
+      </div>
+    </div>
+    <app-exit-button></app-exit-button>
+  </div>
+  <div class="games-container">
+    <game-container (result)="passed($event)" [gameItem]="game"></game-container>
+  </div>
+
+  <div class="floaters">
+    <img src="/assets/character_quiet.png">
+  </div>
+</div>

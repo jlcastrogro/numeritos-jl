@@ -3,83 +3,71 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+// Main component
 import { AppComponent } from 'app/app.component';
+// Views
 import {
   PageNotFoundComponent,
-  RegisterComponent,
-  IslandsComponent,
-  WelcomeComponent,
-  LoginComponent,
-  TestComponent
+  RegisterView,
+  WelcomeView,
+  LoginView,
+  InitialTestView,
+  IslandView,
+  SeaView
 } from 'app/views';
-import { AuthService } from 'app/services/auth.service';
-import { UserGuard } from 'app/services/user.guard';
-import { TestGuard } from 'app/services/test.guard';
-import { IslandsGuard } from 'app/services/islands.guard';
-import { ExitButtonComponent } from 'app/components/exit-button/exit-button.component';
-import { CountingComponent } from './games/counting/counting.component';
-import { LogicalSerieComponent } from 'app/games/logical-serie/logical-serie.component';
-import { ShoppingComponent } from './games/shopping/shopping.component';
-import { OneComponent } from 'app/views/islands/one/one.component';
-import { TwoComponent } from 'app/views/islands/two/two.component';
-import { ThreeComponent } from 'app/views/islands/three/three.component';
-import { GameShoppingComponent } from './views/game-shopping/game-shopping.component';
-import { GameCountingComponent } from './views/game-counting/game-counting.component';
-import { GameLogicalComponent } from './views/game-logical/game-logical.component';
+// Components
+import {
+  ExitButtonComponent,
+  GameContainerComponent,
+  RewardComponent
+} from 'app/components';
+// Services
+import { AuthService } from 'app/services';
+// Guards
+import {
+  UserGuard,
+  TestGuard,
+  IslandsGuard
+} from 'app/services';
+// Games
+import {
+  CountingGame,
+  LogicalSerieGame,
+  ShoppingGame,
+  NumericalSerieEasyGame,
+  NumericalSerieHardGame,
+  NumericalSerieMediumGame,
+  GameTemplate
+} from 'app/games';
+import { GameDirective } from 'app/directives/game.directive';
 
 const appRoutes: Routes = [
   {
     path: 'welcome',
-    component: WelcomeComponent,
+    component: WelcomeView,
     canActivate: [UserGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginView
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterView
   },
   {
     path: 'test',
-    component: TestComponent,
+    component: InitialTestView,
     canActivate: [TestGuard]
   },
   {
     path: 'islands',
-    component: IslandsComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/1',
-    component: OneComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/2',
-    component: TwoComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/3',
-    component: ThreeComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/shopping',
-    component: GameShoppingComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/counting',
-    component: GameCountingComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/logical-serie',
-    component: GameLogicalComponent,
-    canActivate: [IslandsGuard]
+    children: [
+      { path: '', component: SeaView, pathMatch: 'full' },
+      { path: ':island', component: IslandView },
+      { path: ':island/:gameId', component: IslandView }
+    ],
+    // canActivate: [IslandsGuard]
   },
   {
     path: '',
@@ -95,25 +83,41 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    RegisterComponent,
-    WelcomeComponent,
-    IslandsComponent,
-    LoginComponent,
-    TestComponent,
+    RegisterView,
+    WelcomeView,
+    LoginView,
     AppComponent,
     ExitButtonComponent,
-    CountingComponent,
-    LogicalSerieComponent,
-    ShoppingComponent,
-    OneComponent,
-    TwoComponent,
-    ThreeComponent,
-    GameShoppingComponent,
-    GameCountingComponent,
-    GameLogicalComponent
+    CountingGame,
+    LogicalSerieGame,
+    ShoppingGame,
+    GameTemplate,
+    GameContainerComponent,
+    GameDirective,
+    InitialTestView,
+    IslandView,
+    SeaView,
+    RewardComponent,
+    NumericalSerieEasyGame,
+    NumericalSerieHardGame,
+    NumericalSerieMediumGame
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
-  providers: [AuthService, UserGuard, TestGuard],
+  entryComponents: [
+    GameTemplate,
+    CountingGame,
+    LogicalSerieGame,
+    ShoppingGame,
+    NumericalSerieEasyGame,
+    NumericalSerieHardGame,
+    NumericalSerieMediumGame,
+    RewardComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
+  ],
+  providers: [AuthService, UserGuard, TestGuard, IslandsGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

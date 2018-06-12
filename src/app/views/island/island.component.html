@@ -1,0 +1,54 @@
+<div class="screen">
+  <div class="top-row">
+    <div class="user-container">
+      <img src="/assets/{{user.gender}}.png">
+      <span class="text">{{user.alias}}</span>
+    </div>
+    <div class="coins-container">
+      <div *ngIf="subroute">
+        <div *ngFor="let e of games"
+             class="{{ determineClass(e.data).join(' ') }}">
+        </div>
+      </div>
+    </div>
+    <app-exit-button></app-exit-button>
+  </div>
+
+  <div *ngIf="!subroute"
+       class="games-container">
+    <div *ngFor="let game of island.games">
+      <div *ngIf="game.id === 0 || stars[game.id - 1][2] === 'gold'"
+           class="unlocked"
+           (click)="redirect(game.id)">
+        <img src="{{game.screenshot}}">
+      </div>
+      <div *ngIf="game.id !== 0 && stars[game.id - 1][2] !== 'gold'">
+        <img src="/assets/surpriseIcon.png">
+      </div>
+      <div>
+        <img *ngFor="let star of stars[game.id]"
+             src="/assets/{{star}}Star.png">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="subroute"
+       class="games-container">
+    <game-container [gameItem]="game"
+                    (result)="passed($event)"></game-container>
+  </div>
+
+  <div *ngIf="!subroute" class="floaters">
+    <div></div>
+    <div></div>
+    <a routerLink="{{ subroute ? '/islands/' + this.island.name : '/islands' }}">
+      <img src="/assets/redBackArrow.png">
+    </a>
+    <div></div>
+  </div>
+
+  <div *ngIf="unlockedRecently"
+       class="recent">
+    <img src="{{recent}}">
+  </div>
+</div>

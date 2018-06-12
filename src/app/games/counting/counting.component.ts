@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GameTemplate } from 'app/games/template/template.component';
 
 // Defines the available animals
 const animals: string[] = ['pig', 'cat', 'dog', 'cow', 'rabbit'];
@@ -7,28 +8,28 @@ const maxAnimals = 16;
 // Defines the total number of options
 const totalOptions = 3;
 
+/**
+ * The goal of this game is to count animals. The animal to count gets selected
+ * randomly from animals. The number of animals on the game also gets calculated
+ * randomly.
+ */
 @Component({
   selector: 'app-counting',
   templateUrl: './counting.component.html',
   styleUrls: ['./counting.component.css']
 })
-export class CountingComponent implements OnInit {
-  @Output() passed = new EventEmitter<any>();
+export class CountingGame extends GameTemplate implements OnInit {
   options = [];
   animals = [];
   targetAnimal = 'unknown';
   xAnimal = 'unknown';
   answer = 0;
-  result: boolean;
-  mainAudio;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
-    this.mainAudio = new Audio();
-    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
-    this.mainAudio.load();
-
     this.selectAnimals();
     this.distributeAnimals();
     // Filling available options
@@ -75,15 +76,12 @@ export class CountingComponent implements OnInit {
   }
 
   /**
-   * Triggers when an answer is clicked. It emits a notification to parent
-   * component with the result of the game (true if passed, false otherwise).
+   * Triggers when an answer is clicked/selected. Reports the result.
    * @param i The value of the answer clicked.
    */
   select(i) {
-    if (this.result = i === this.answer) {
-      this.mainAudio.play();
-    }
-    this.passed.emit(this.result);
+    this.passed = i === this.answer
+    this.report();
   }
 }
 

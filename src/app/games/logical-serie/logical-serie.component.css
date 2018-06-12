@@ -2,14 +2,14 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background: url('/assets/testview/board.png') no-repeat center;
+  background: url('/assets/board.png') no-repeat center;
 }
 
 .game .field {
   height: 433px;
   width: 1064px;
   padding: 0;
-  background: url('/assets/testview/logicalBackground.png') no-repeat center;
+  background: url('/assets/logicalBackground.png') no-repeat center;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   margin: 20px 0;
   /* background: rgba(121, 85, 72, 0.5); */
   background: rgba(255, 255, 255, 0.5);
-  /* border-radius: 10px; */
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@
   height: 80px;
   width: 80px;
   cursor: move;
-  /* border-radius: 20%; */
+  border-radius: 20px;
   border-width: 2px;
   border-color: brown;
   border: white 2px solid;
@@ -81,15 +81,4 @@
 
 .game img {
   margin: auto;
-}
-
-.game .floaters {
-  position: absolute;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: space-around;
-  align-content: center;
 }

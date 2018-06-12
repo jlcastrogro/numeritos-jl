@@ -3,7 +3,8 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
+  ActivatedRoute
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'app/services/auth.service';
@@ -12,12 +13,13 @@ import { AuthService } from 'app/services/auth.service';
   providedIn: 'root'
 })
 export class IslandsGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    console.log(next);
     switch (state.url) {
       case '/islands':
         return this.islands();
@@ -37,7 +39,7 @@ export class IslandsGuard implements CanActivate {
     }
   }
 
-  islands() {
+  islands(): Observable<boolean> {
     return new Observable<boolean>(observer => {
       this.auth.user.subscribe(
         user => {

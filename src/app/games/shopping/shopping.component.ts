@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GameTemplate } from 'app/games/template/template.component';
 
 const coins = [1, 2, 5, 10];
 
@@ -7,33 +8,30 @@ const coins = [1, 2, 5, 10];
   templateUrl: './shopping.component.html',
   styleUrls: ['./shopping.component.css']
 })
-export class ShoppingComponent implements OnInit {
-  @Output() passed = new EventEmitter<boolean>();
+export class ShoppingGame extends GameTemplate implements OnInit {
   opA = 1;
   opB = 1;
   res = '';
-  result: boolean;
-  mainAudio;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
-    this.mainAudio = new Audio();
-    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
-    this.mainAudio.load();
-
     this.opA = coins[randInt(coins.length)];
     this.opB = coins[randInt(coins.length)];
     this.res = '';
-   }
+  }
 
+  /**
+   * Checks answer correctness and reports the result.
+   * @param evt A keyboard event to check result.
+   */
   submit(evt: KeyboardEvent) {
     if (evt.key === 'Enter') {
       evt.preventDefault();
-      if (this.result = Number(this.res) === (this.opA + this.opB)) {
-        this.mainAudio.play();
-      }
-      this.passed.emit(this.result);
+      this.passed = Number(this.res) === (this.opA + this.opB);
+      this.report();
     }
   }
 }

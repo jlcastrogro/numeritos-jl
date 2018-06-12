@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogicalSerieComponent } from './logical-serie.component';
+import { LogicalSerieGame } from './logical-serie.component';
 
 describe('LogicalSerieComponent', () => {
-  let component: LogicalSerieComponent;
-  let fixture: ComponentFixture<LogicalSerieComponent>;
+  let component: LogicalSerieGame;
+  let fixture: ComponentFixture<LogicalSerieGame>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogicalSerieComponent ]
+      declarations: [ LogicalSerieGame ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LogicalSerieComponent);
+    fixture = TestBed.createComponent(LogicalSerieGame);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,60 @@
+<div class="screen">
+  <div class="top-row">
+    <div class="user-container">
+      <img src="/assets/{{user.gender}}.png">
+      <span class="text">{{user.alias}}</span>
+    </div>
+    <app-exit-button></app-exit-button>
+  </div>
+  <div class="islands-container">
+    <div>
+      <a *ngIf="user.level >= 1"
+         routerLink="/islands/forest">
+        <img src="/assets/island1.png">
+      </a>
+      <img *ngIf="user.level < 1"
+           src="/assets/locked_island1.png">
+      <div class="coins">
+        <img *ngFor="let i of islands[0]"
+             width="48"
+             height="48"
+             src="/assets/{{i ? 'golden' : 'silver'}}Coin.png">
+      </div>
+    </div>
+    <img src="/assets/path1.png">
+    <div>
+      <div class="coins">
+        <img *ngFor="let i of islands[1]"
+             width="48"
+             height="48"
+             src="/assets/{{i ? 'golden' : 'silver'}}Coin.png">
+      </div>
+      <a *ngIf="user.level >= 2"
+         routerLink="/islands/beach">
+        <img src="/assets/island2.png">
+      </a>
+      <img *ngIf="user.level < 2"
+           src="/assets/locked_island2.png">
+    </div>
+    <img src="/assets/path2.png">
+    <div>
+      <a *ngIf="user.level >= 3"
+         routerLink="/islands/city">
+        <img src="/assets/island3.png">
+      </a>
+      <img *ngIf="user.level < 3"
+           src="/assets/locked_island3.png">
+      <div class="coins">
+        <img *ngFor="let i of islands[2]"
+             width="48"
+             height="48"
+             src="/assets/{{i ? 'golden' : 'silver'}}Coin.png">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="unlockedRecently"
+       class="floaters">
+    <img src="/assets/unlocked{{unlockedRecently}}.png">
+  </div>
+</div>

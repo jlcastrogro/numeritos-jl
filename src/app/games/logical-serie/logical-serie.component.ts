@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { isNumber } from 'util';
+import { GameTemplate } from 'app/games/template/template.component';
 
 interface Figure {
   id: number;
@@ -11,25 +12,25 @@ const serieLength = 8;
 const figures = ['triangle', 'circle', 'square'];
 const colors = ['purple', 'blue', 'red', 'green', 'brown'];
 
+/**
+ * The goal in this game is to select the next three possible elements in the
+ * serie shown.
+ */
 @Component({
   selector: 'app-logical-serie',
   templateUrl: './logical-serie.component.html',
   styleUrls: ['./logical-serie.component.css']
 })
-export class LogicalSerieComponent implements OnInit {
-  @Output() passed = new EventEmitter<boolean>();
+export class LogicalSerieGame extends GameTemplate implements OnInit {
   serie: Figure[] = [];
   answer: Figure[] = [];
   options: Figure[] = [];
-  result: boolean;
-  mainAudio;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
-    this.mainAudio = new Audio();
-    this.mainAudio.src = '/assets/sounds/Correct answer.mp3';
-    this.mainAudio.load();
     // Generates a logical serie
     for (let i = 0; i < 3; i++) {
       this.serie.push({
@@ -58,8 +59,8 @@ export class LogicalSerieComponent implements OnInit {
 
     this.options.push({
       id: this.serie.length,
-      name: this.serie[this.serie.length % 3].name,
-      color: this.serie[this.serie.length % 3].color
+      name: figures[randInt(figures.length)],
+      color: colors[randInt(colors.length)]
     });
     // Sorts options to answer it randomly
     this.options.sort(() => Math.random() - 0.5);
@@ -140,6 +141,9 @@ export class LogicalSerieComponent implements OnInit {
     evt.preventDefault();
   }
 
+  /**
+   * Checks the result and reports the answer.
+   */
   submit() {
     for (let i = 0; i < this.serie.length; i++) {
       if (
@@ -147,14 +151,14 @@ export class LogicalSerieComponent implements OnInit {
         this.serie[i].name !== this.answer[i].name ||
         this.serie[i].color !== this.answer[i].color
       ) {
-        this.passed.emit((this.result = false));
+        this.passed = false;
+        this.report();
         return;
       }
     }
 
-    this.mainAudio.play();
-    this.passed.emit((this.result = true));
-    return;
+    this.passed = true;
+    this.report();
   }
 }
 
@@ -163,6 +167,7 @@ export class LogicalSerieComponent implements OnInit {
  * @param a If b is not provided then a becomes upper bound: [0, a). If b is
  * provided then bounds will be [a, b).
  * @param b Defines upper bound for this.
+ * @returns A random integer in range.
  */
 function randInt(a: number, b?: number): number {
   if (b === undefined) {

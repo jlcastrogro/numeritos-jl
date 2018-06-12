@@ -1,0 +1,98 @@
+.game {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/board.png') no-repeat center;
+}
+
+.game .field {
+  height: 433px;
+  width: 1064px;
+  padding: 0;
+  background: url('/assets/island2game2.png') no-repeat center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.game .field .options {
+  margin-top: 20px;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.game .field .options > div {
+  margin: 30px;
+}
+
+.game .field .serie {
+  margin: 20px 0;
+  /* background: rgba(121, 85, 72, 0.5); */
+  /* background: rgba(255, 255, 255, 0.5); */
+  /* border-radius: 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game .field .serie > div {
+  padding: 10px;
+  margin: 10px;
+  height: 80px;
+  width: 80px;
+  cursor: move;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: brown;
+  border: white 2px solid;
+  background: #8dcff4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game .field .btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.game .field .btnContainer button {
+  width: 200px;
+  border-radius: 10px;
+  border: none;
+  height: 75px;
+  background-color: #032f55;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.game .field .btnContainer button:hover,
+.game .field .btnContainer button:focus {
+  background-color: #032f88;
+  box-shadow: 2px 2px #011f22;
+}
+
+.game img {
+  margin: auto;
+}
+
+div.circle {
+  border-radius: 50%;
+  background: #00709e;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: #011f22 2px 2px;
+  font-size: 25px;
+  font-family: Lato, Roboto, sans-serif;
+  font-style: normal;
+}

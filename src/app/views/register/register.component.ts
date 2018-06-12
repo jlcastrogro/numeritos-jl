@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterView implements OnInit {
   name = '';
   gender = Math.random() < 0.5 ? 'boy' : 'girl';
   userStatus = '';

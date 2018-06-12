@@ -2,14 +2,14 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background: url('/assets/testview/board.png') no-repeat center;
+  background: url('/assets/board.png') no-repeat center;
 }
 
 .game .field {
   height: 433px;
   width: 1064px;
   padding: 0;
-  background: url('/assets/testview/shoppingBackground.png') no-repeat center;
+  background: url('/assets/shoppingBackground.png') no-repeat center;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -74,15 +74,4 @@
 
 .game img {
   margin: auto;
-}
-
-.game .floaters {
-  position: absolute;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: space-around;
-  align-content: center;
 }

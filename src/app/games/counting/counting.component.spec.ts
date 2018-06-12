@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountingComponent } from './counting.component';
+import { CountingGame } from './counting.component';
 
 describe('CountingComponent', () => {
-  let component: CountingComponent;
-  let fixture: ComponentFixture<CountingComponent>;
+  let component: CountingGame;
+  let fixture: ComponentFixture<CountingGame>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CountingComponent ]
+      declarations: [ CountingGame ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CountingComponent);
+    fixture = TestBed.createComponent(CountingGame);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

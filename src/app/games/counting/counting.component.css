@@ -2,14 +2,14 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background: url('/assets/testview/board.png') no-repeat center;
+  background: url('/assets/board.png') no-repeat center;
 }
 
 .game .field {
   height: 433px;
   width: 1064px;
   padding: 0;
-  background: url('/assets/testview/countingBackground.png') no-repeat center;
+  background: url('/assets/countingBackground.png') no-repeat center;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -36,9 +36,15 @@
   width: 100px;
 }
 
+.game .field .target img {
+  height: 80px;
+  width: auto;
+}
+
 .game .field .options {
   display: flex;
   justify-content: space-around;
+  font-family: Lato, Roboto, sans-serif;
 }
 
 .game .field .options div {
@@ -80,15 +86,4 @@
 
 .game img {
   margin: auto;
-}
-
-.game .floaters {
-  position: absolute;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: space-around;
-  align-content: center;
 }

@@ -1,0 +1,174 @@
+.screen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.screen div.floaters {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 1;
+  height: 100%;
+}
+
+.text {
+  text-shadow: #011f22 2px 2px;
+}
+
+/*noinspection CssUnknownTarget*/
+.top-row {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: url('/assets/topBarBackground.png') no-repeat center;
+  background-size: cover;
+}
+
+.top-row > app-exit-button {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
+.top-row div.coins-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.top-row div.coins-container > div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 10px;
+}
+
+.top-row div.coins-container > div div {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+}
+
+.top-row div.coins-container > div div.completed {
+  background: #7cc623;
+}
+
+.top-row div.coins-container > div div.incompleted {
+  background: #999;
+}
+
+.top-row div.coins-container > div div.active {
+  background: yellow;
+}
+
+.top-row > div:first-child {
+  position: absolute;
+  display: flex;
+  left: 20px;
+  bottom: 10px;
+}
+
+.top-row > div:first-child span {
+  margin: auto 10px;
+  color: white;
+  font-family: 'Gloria Hallelujah', Roboto, sans-serif;
+  font-size: 30px;
+}
+
+.top-row > div:first-child img {
+  border-radius: 100%;
+  background: #fff;
+  height: 60px;
+}
+
+div.games-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  height: calc(100% - 150px);
+}
+
+div.games-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto 10px;
+  width: 30%;
+  height: 200px;
+  margin: 0 5%;
+}
+
+div.games-container > div > div:first-child {
+  display: flex;
+  justify-content: center;
+  border: 10px rgba(0, 0, 0, 0.7) solid;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  width: 100%;
+  height: 70%;
+  transition: width 300ms ease-in-out, height 300ms ease-in-out,
+    background-color 300ms ease-in-out;
+}
+
+.unlocked {
+  cursor: pointer;
+}
+
+div.games-container > div > div.unlocked:first-child:hover {
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 0, 0.7);
+}
+
+div.games-container > div > div:first-child img {
+  height: 100%;
+}
+
+div.games-container > div > div:last-child img {
+  margin: 3px;
+  height: 30px;
+  width: auto;
+}
+
+div.games-container > div > div:last-child {
+  display: flex;
+  justify-content: center;
+}
+
+.games-container {
+  display: flex;
+  justify-content: center;
+  height: calc(100% - 150px);
+}
+
+.games-container > game-container {
+  width: 100%;
+  height: 100%;
+}
+
+.screen div.recent {
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.screen div.recent img {
+  background: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}

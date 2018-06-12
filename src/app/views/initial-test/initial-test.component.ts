@@ -105,7 +105,7 @@ export class InitialTestView implements OnInit {
    * @param game Data about the game.
    * @returns An array of classes for the indicator provided.
    */
-  determineClass(game: any) {
+  determineClass(game: Game) {
     let classes = [];
     game.active ? classes.push('active') : null;
     game.unlocked ? null : classes.push('superhide');

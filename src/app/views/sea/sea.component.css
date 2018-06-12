@@ -1,0 +1,109 @@
+.screen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/*noinspection CssUnknownTarget*/
+.top-row {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: url('/assets/topBarBackground.png') no-repeat center;
+  background-size: cover;
+}
+
+.top-row > app-exit-button {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
+.top-row > div:first-child {
+  position: absolute;
+  display: flex;
+  left: 20px;
+  bottom: 10px;
+}
+
+.top-row > div:first-child span {
+  margin: auto 10px;
+  color: white;
+  font-family: 'Gloria Hallelujah', Roboto, sans-serif;
+  font-size: 30px;
+}
+
+.top-row > div:first-child img {
+  border-radius: 100%;
+  background: #fff;
+  height: 60px;
+}
+
+.islands-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('/assets/sea.png') no-repeat center;
+  background-size: cover;
+  height: calc(100% - 150px);
+}
+
+.islands-container > div {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto 10px;
+}
+
+.islands-container > div:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.islands-container .coins {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.islands-container .coins div {
+  height: 30px;
+  width: 30px;
+  background: grey;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.islands-container .coins div.completed {
+  background: yellow;
+}
+
+.islands-container > img {
+  height: 100px;
+  width: 100px;
+}
+
+.screen div.floaters {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  bottom: 0;
+  top: 150px;
+}
+
+.screen div.floaters img {
+  background: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}

@@ -8,11 +8,12 @@ import { AppComponent } from 'app/app.component';
 // Views
 import {
   PageNotFoundComponent,
-  RegisterComponent,
-  IslandsComponent,
-  WelcomeComponent,
-  LoginComponent,
-  InitialTestView
+  RegisterView,
+  WelcomeView,
+  LoginView,
+  InitialTestView,
+  IslandView,
+  SeaView
 } from 'app/views';
 // Components
 import {
@@ -33,71 +34,30 @@ import {
   LogicalSerieGame,
   ShoppingGame
 } from 'app/games';
-import { OneComponent } from 'app/views/islands/one/one.component';
-import { TwoComponent } from 'app/views/islands/two/two.component';
-import { ThreeComponent } from 'app/views/islands/three/three.component';
-import { GameShoppingComponent } from './views/game-shopping/game-shopping.component';
-import { GameCountingComponent } from './views/game-counting/game-counting.component';
-import { GameLogicalComponent } from './views/game-logical/game-logical.component';
 import { GameTemplate } from 'app/games/template/template.component';
-import { GameDirective } from './directives/game.directive';
-import { BeachComponent } from './views/islands/beach/beach.component';
-import { ForestComponent } from './views/islands/forest/forest.component';
-import { CityComponent } from './views/islands/city/city.component';
+import { GameDirective } from 'app/directives/game.directive';
+import { IslandsModule } from 'app/islands/islands.module';
+import { ForestComponent } from 'app/views/islands/forest/forest.component';
+import { RewardComponent } from './components/reward/reward.component';
 
 const appRoutes: Routes = [
   {
     path: 'welcome',
-    component: WelcomeComponent,
+    component: WelcomeView,
     canActivate: [UserGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginView
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterView
   },
   {
     path: 'test',
     component: InitialTestView,
     canActivate: [TestGuard]
-  },
-  {
-    path: 'islands',
-    component: IslandsComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/1',
-    component: OneComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/2',
-    component: TwoComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'island/3',
-    component: ThreeComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/shopping',
-    component: GameShoppingComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/counting',
-    component: GameCountingComponent,
-    canActivate: [IslandsGuard]
-  },
-  {
-    path: 'game/logical-serie',
-    component: GameLogicalComponent,
-    canActivate: [IslandsGuard]
   },
   {
     path: '',
@@ -113,31 +73,36 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    RegisterComponent,
-    WelcomeComponent,
-    IslandsComponent,
-    LoginComponent,
+    RegisterView,
+    WelcomeView,
+    LoginView,
     AppComponent,
     ExitButtonComponent,
     CountingGame,
     LogicalSerieGame,
     ShoppingGame,
-    OneComponent,
-    TwoComponent,
-    ThreeComponent,
-    GameShoppingComponent,
-    GameCountingComponent,
-    GameLogicalComponent,
     GameTemplate,
     GameContainerComponent,
     GameDirective,
     InitialTestView,
-    BeachComponent,
     ForestComponent,
-    CityComponent
+    IslandView,
+    SeaView,
+    RewardComponent
   ],
-  entryComponents: [GameTemplate, CountingGame, LogicalSerieGame, ShoppingGame],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
+  entryComponents: [
+    GameTemplate,
+    CountingGame,
+    LogicalSerieGame,
+    ShoppingGame,
+    RewardComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    IslandsModule
+  ],
   providers: [AuthService, UserGuard, TestGuard],
   bootstrap: [AppComponent]
 })

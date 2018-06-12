@@ -57,6 +57,11 @@ export class GameContainerComponent implements OnInit {
       const viewContainerRef = this.gameHost.viewContainerRef;
       viewContainerRef.clear();
       this.gameRef = viewContainerRef.createComponent(cmpFactory);
+      if (game.data) {
+        const cmp =(<any>this.gameRef).instance;
+        cmp.username = game.data.username;
+        cmp.stars = game.data.stars;
+      }
     }
 
     this.gameRef.instance.result.subscribe(this.gameResult.bind(this));

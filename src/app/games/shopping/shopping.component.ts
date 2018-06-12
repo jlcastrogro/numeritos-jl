@@ -9,25 +9,24 @@ const coins = [1, 2, 5, 10];
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingGame extends GameTemplate implements OnInit {
-  @Output() result = new EventEmitter<boolean>();
   opA = 1;
   opB = 1;
   res = '';
 
   constructor() {
     super();
-   }
+  }
 
   ngOnInit() {
     this.opA = coins[randInt(coins.length)];
     this.opB = coins[randInt(coins.length)];
     this.res = '';
-   }
+  }
 
-   /**
-    * Checks answer correctness and reports the result.
-    * @param evt A keyboard event to check result.
-    */
+  /**
+   * Checks answer correctness and reports the result.
+   * @param evt A keyboard event to check result.
+   */
   submit(evt: KeyboardEvent) {
     if (evt.key === 'Enter') {
       evt.preventDefault();

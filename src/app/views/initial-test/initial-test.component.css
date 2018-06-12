@@ -26,7 +26,7 @@
   position: relative;
   width: 100%;
   height: 150px;
-  background: url('/assets/testview/topBarBackground.png') no-repeat center;
+  background: url('/assets/topBarBackground.png') no-repeat center;
   background-size: cover;
 }
 
@@ -94,7 +94,7 @@
   height: calc(100% - 150px);
 }
 
-.games-container * {
+.games-container > * {
   width: 100%;
 }
 

@@ -6,7 +6,7 @@ import {AuthService, User} from 'app/services/auth.service';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeView implements OnInit {
   user: User;
   mainAudio;
 

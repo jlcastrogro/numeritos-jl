@@ -1,33 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { User, AuthService } from 'app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
-/**
- * Provides information about islands' id.
- */
-export const map = {
-  forest: 0,
-  beach: 1,
-  city: 2,
-  0: 'forest',
-  1: 'beach',
-  2: 'city'
-};
 
 @Component({
-  selector: 'app-islands',
-  templateUrl: './islands.component.html',
-  styleUrls: ['./islands.component.css']
+  selector: 'app-sea',
+  templateUrl: './sea.component.html',
+  styleUrls: ['./sea.component.css']
 })
-export class IslandsView implements OnInit {
+export class SeaView implements OnInit {
   user: User;
   islands: any;
   unlockedRecently = 0;
+  audio = new Audio();
 
-  constructor(private auth: AuthService, private route: ActivatedRoute) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(console.log);
     this.user = {
       _id: '',
       _rev: '',
@@ -35,6 +22,9 @@ export class IslandsView implements OnInit {
       gender: 'boy',
       islands: []
     };
+
+    this.audio.src = '/assets/sounds/Winner sound.mp3';
+    this.audio.load();
     // Initialize to avoid errors, determines the stars per island
     this.islands = [[], [], []];
     // Gets real information about user
@@ -46,11 +36,12 @@ export class IslandsView implements OnInit {
       this.unlockedRecently = u.level - u.lastLevel;
       // If there are new islands unlocked, show for 1.5s a notification
       if (this.unlockedRecently) {
+        this.audio.play();
         setTimeout(() => {
           this.user.lastLevel = this.user.level;
           this.unlockedRecently = 0;
           this.auth.updateUser(this.user);
-        }, 1500);
+        }, this.audio.duration * 1000);
       }
 
       // Start checking islands' completed games

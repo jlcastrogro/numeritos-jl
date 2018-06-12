@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/index';
 
 declare var PouchDB: any;
 const sessionExpire = 3600000; // (ms) Session expires at 1 hour
@@ -14,10 +14,10 @@ export interface User {
   // This app's requirements
   alias: string;
   gender: string;
-  level?: number;
-  lastLevel?: number;
-  islands: {
-    stars: number[];
+  level?: number; // Current level of the user
+  lastLevel?: number; // Last level registered on island screen
+  islands: { // Information about the user progress on each island
+    stars: number[]; // The stars on game 0, ..., 3 of this island
   }[];
 }
 

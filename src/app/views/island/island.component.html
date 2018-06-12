@@ -2,7 +2,7 @@
   <div class="top-row">
     <div class="user-container">
       <img src="/assets/{{user.gender}}.png">
-      <span>{{user.alias}}</span>
+      <span class="text">{{user.alias}}</span>
     </div>
     <div class="coins-container">
       <div *ngIf="subroute">
@@ -38,12 +38,17 @@
                     (result)="passed($event)"></game-container>
   </div>
 
-  <div class="floaters">
+  <div *ngIf="!subroute" class="floaters">
     <div></div>
     <div></div>
     <a routerLink="{{ subroute ? '/islands/' + this.island.name : '/islands' }}">
       <img src="/assets/redBackArrow.png">
     </a>
     <div></div>
+  </div>
+
+  <div *ngIf="unlockedRecently"
+       class="recent">
+    <img src="{{recent}}">
   </div>
 </div>

@@ -44,6 +44,7 @@
 .game .field .options {
   display: flex;
   justify-content: space-around;
+  font-family: Lato, Roboto, sans-serif;
 }
 
 .game .field .options div {

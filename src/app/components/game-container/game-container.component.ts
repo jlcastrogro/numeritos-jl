@@ -59,8 +59,9 @@ export class GameContainerComponent implements OnInit {
       this.gameRef = viewContainerRef.createComponent(cmpFactory);
       if (game.data) {
         const cmp =(<any>this.gameRef).instance;
-        cmp.username = game.data.username;
-        cmp.stars = game.data.stars;
+        for (let d in game.data) {
+          cmp[d] = game.data[d];
+        }
       }
     }
 

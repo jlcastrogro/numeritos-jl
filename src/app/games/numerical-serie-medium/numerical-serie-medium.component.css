@@ -9,7 +9,7 @@
   height: 433px;
   width: 1064px;
   padding: 0;
-  background: url('/assets/logicalBackground.png') no-repeat center;
+  background: url('/assets/island2game2.png') no-repeat center;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -25,15 +25,13 @@
 
 .game .field .options > div {
   margin: 30px;
-  height: 80px;
-  width: 80px;
 }
 
 .game .field .serie {
   margin: 20px 0;
   /* background: rgba(121, 85, 72, 0.5); */
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
+  /* background: rgba(255, 255, 255, 0.5); */
+  /* border-radius: 20px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,20 +47,20 @@
   border-width: 2px;
   border-color: brown;
   border: white 2px solid;
-  background: #fdf083;
+  background: #8dcff4;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game .field .btnContainer {
-  width: 1000px;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
 .game .field .btnContainer button {
-  width: 300px;
+  width: 200px;
   border-radius: 10px;
   border: none;
   height: 75px;
@@ -71,6 +69,7 @@
   display: flex;
   justify-content: space-around;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .game .field .btnContainer button:hover,
@@ -81,4 +80,19 @@
 
 .game img {
   margin: auto;
+}
+
+div.circle {
+  border-radius: 50%;
+  background: #00709e;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: #011f22 2px 2px;
+  font-size: 25px;
+  font-family: Lato, Roboto, sans-serif;
+  font-style: normal;
 }

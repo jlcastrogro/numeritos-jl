@@ -1,0 +1,34 @@
+<div class="game">
+  <div class="field">
+
+    <div class="options"
+         (dragover)="$event.preventDefault()"
+         (drop)="dropOnOption($event)">
+      <div class="circle"
+           *ngFor="let e of options"
+           (dragstart)="dragFromOption($event)"
+           draggable="true"
+           [attr.value]="e.id">
+        {{e.value}}
+      </div>
+    </div>
+
+    <div class="serie"
+         (dragover)="allowDrop($event)">
+      <div *ngFor="let e of answer"
+           (drop)="dropOnAnswer($event)">
+        <div class="circle"
+             (dragstart)="dragFromAnswer($event)"
+             draggable="true"
+             [attr.value]="e ? e.id : ''"
+             *ngIf="e">{{e.value}}</div>
+      </div>
+    </div>
+
+    <div class="btnContainer">
+      <button (click)="submit()">
+        <img src="/assets/playIcon.png">
+      </button>
+    </div>
+  </div>
+</div>

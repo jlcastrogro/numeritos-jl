@@ -47,6 +47,7 @@
   font-family: 'Gloria Hallelujah', Roboto, sans-serif;
   font-size: 40px;
   color: white;
+  text-shadow: #011f22 2px 2px;
 }
 
 .container button {

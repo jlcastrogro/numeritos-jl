@@ -35,6 +35,7 @@
   color: white;
   font-family: 'Gloria Hallelujah', Roboto, sans-serif;
   font-size: 30px;
+  text-shadow: #011f22 2px 2px;
 }
 
 .top-row > div:first-child img {

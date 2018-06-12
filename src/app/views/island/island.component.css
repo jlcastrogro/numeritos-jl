@@ -16,6 +16,10 @@
   height: 100%;
 }
 
+.text {
+  text-shadow: #011f22 2px 2px;
+}
+
 /*noinspection CssUnknownTarget*/
 .top-row {
   display: flex;
@@ -151,4 +155,20 @@ div.games-container > div > div:last-child {
 .games-container > game-container {
   width: 100%;
   height: 100%;
+}
+
+.screen div.recent {
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.screen div.recent img {
+  background: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }

@@ -1,7 +1,14 @@
 import { Component, OnInit, Type, AfterViewInit } from '@angular/core';
 import { User, AuthService } from 'app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CountingGame, ShoppingGame, LogicalSerieGame } from 'app/games';
+import {
+  CountingGame,
+  ShoppingGame,
+  LogicalSerieGame,
+  NumericalSerieEasyGame,
+  NumericalSerieMediumGame,
+  NumericalSerieHardGame
+} from 'app/games';
 import { GameItem } from 'app/components';
 import { Observable, Observer } from 'rxjs';
 import { RewardComponent } from 'app/components/reward/reward.component';
@@ -35,30 +42,30 @@ export const islands: Island[] = [
     id: 0,
     name: 'forest',
     games: [
-      { id: 0, screenshot: '/assets/mini1.png', game: CountingGame },
-      { id: 1, screenshot: '/assets/mini1.png', game: CountingGame },
-      { id: 2, screenshot: '/assets/mini1.png', game: CountingGame },
-      { id: 3, screenshot: '/assets/mini1.png', game: CountingGame },
+      { id: 0, screenshot: '/assets/screenshots/mini11.png', game: CountingGame },
+      { id: 1, screenshot: '/assets/screenshots/mini12.png', game: NumericalSerieEasyGame },
+      { id: 2, screenshot: '/assets/screenshots/mini11.png', game: CountingGame },
+      { id: 3, screenshot: '/assets/screenshots/mini12.png', game: NumericalSerieEasyGame }
     ]
   },
   {
     id: 1,
     name: 'beach',
     games: [
-      { id: 0, screenshot: '/assets/mini2.png', game: LogicalSerieGame },
-      { id: 1, screenshot: '/assets/mini2.png', game: LogicalSerieGame },
-      { id: 2, screenshot: '/assets/mini2.png', game: LogicalSerieGame },
-      { id: 3, screenshot: '/assets/mini2.png', game: LogicalSerieGame },
+      { id: 0, screenshot: '/assets/screenshots/mini21.png', game: LogicalSerieGame },
+      { id: 1, screenshot: '/assets/screenshots/mini22.png', game: NumericalSerieMediumGame },
+      { id: 2, screenshot: '/assets/screenshots/mini21.png', game: LogicalSerieGame },
+      { id: 3, screenshot: '/assets/screenshots/mini22.png', game: NumericalSerieMediumGame }
     ]
   },
   {
     id: 2,
     name: 'city',
     games: [
-      { id: 0, screenshot: '/assets/mini3.png', game: ShoppingGame },
-      { id: 1, screenshot: '/assets/mini3.png', game: ShoppingGame },
-      { id: 2, screenshot: '/assets/mini3.png', game: ShoppingGame },
-      { id: 3, screenshot: '/assets/mini3.png', game: ShoppingGame },
+      { id: 0, screenshot: '/assets/screenshots/mini31.png', game: ShoppingGame },
+      { id: 1, screenshot: '/assets/screenshots/mini32.png', game: NumericalSerieHardGame },
+      { id: 2, screenshot: '/assets/screenshots/mini31.png', game: ShoppingGame },
+      { id: 3, screenshot: '/assets/screenshots/mini32.png', game: NumericalSerieHardGame }
     ]
   }
 ];
@@ -78,6 +85,8 @@ export class IslandView implements OnInit, AfterViewInit {
   gameChanger: Observer<GameItem>;
   gameId: number;
   current: number;
+  unlockedRecently = false;
+  recent = '/assets/newGameUnlocked.png';
 
   constructor(private auth: AuthService,
     private router: Router,
@@ -183,13 +192,21 @@ export class IslandView implements OnInit, AfterViewInit {
           stars: stars
         }
       });
-
-    } else {
-      // Save result
+      // Update user
       let correctAnswers = 0;
       this.games.forEach(g => g.data.result ? correctAnswers++ : null);
       if (this.user.islands[this.island.id].stars[this.gameId] < correctAnswers) {
         this.user.islands[this.island.id].stars[this.gameId] = correctAnswers;
+        if (correctAnswers === 3) {
+          if (this.gameId === 3 && this.island.id !== 2 && this.user.level < 3) {
+            this.unlockedRecently = true;
+            this.recent = '/assets/newIslandUnlocked.png';
+          } else if (this.gameId !== 3) {
+            this.unlockedRecently = true;
+            this.recent = '/assets/newGameUnlocked.png';
+          }
+          setTimeout(() => this.unlockedRecently = false, 3000);
+        }
       }
       if (correctAnswers === 3 && this.gameId === 3 && this.island.id < 2 &&
         this.user.level - 1 === this.island.id) {
@@ -197,11 +214,8 @@ export class IslandView implements OnInit, AfterViewInit {
         this.user.level++;
       }
       this.auth.updateUser(this.user);
-      if (result) {
-        this.router.navigate(['/islands', this.island.name]);
-      } else {
-        this.router.navigate(['/welcome']);
-      }
+    } else {
+      this.router.navigate(['/islands', this.island.name]);
     }
   }
 }

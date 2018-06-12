@@ -18,7 +18,8 @@ import {
 // Components
 import {
   ExitButtonComponent,
-  GameContainerComponent
+  GameContainerComponent,
+  RewardComponent
 } from 'app/components';
 // Services
 import { AuthService } from 'app/services';
@@ -32,13 +33,13 @@ import {
 import {
   CountingGame,
   LogicalSerieGame,
-  ShoppingGame
+  ShoppingGame,
+  NumericalSerieEasyGame,
+  NumericalSerieHardGame,
+  NumericalSerieMediumGame,
+  GameTemplate
 } from 'app/games';
-import { GameTemplate } from 'app/games/template/template.component';
 import { GameDirective } from 'app/directives/game.directive';
-import { IslandsModule } from 'app/islands/islands.module';
-import { ForestComponent } from 'app/views/islands/forest/forest.component';
-import { RewardComponent } from './components/reward/reward.component';
 
 const appRoutes: Routes = [
   {
@@ -58,6 +59,15 @@ const appRoutes: Routes = [
     path: 'test',
     component: InitialTestView,
     canActivate: [TestGuard]
+  },
+  {
+    path: 'islands',
+    children: [
+      { path: '', component: SeaView, pathMatch: 'full' },
+      { path: ':island', component: IslandView },
+      { path: ':island/:gameId', component: IslandView }
+    ],
+    // canActivate: [IslandsGuard]
   },
   {
     path: '',
@@ -85,25 +95,29 @@ const appRoutes: Routes = [
     GameContainerComponent,
     GameDirective,
     InitialTestView,
-    ForestComponent,
     IslandView,
     SeaView,
-    RewardComponent
+    RewardComponent,
+    NumericalSerieEasyGame,
+    NumericalSerieHardGame,
+    NumericalSerieMediumGame
   ],
   entryComponents: [
     GameTemplate,
     CountingGame,
     LogicalSerieGame,
     ShoppingGame,
+    NumericalSerieEasyGame,
+    NumericalSerieHardGame,
+    NumericalSerieMediumGame,
     RewardComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule,
-    IslandsModule
+    FormsModule
   ],
-  providers: [AuthService, UserGuard, TestGuard],
+  providers: [AuthService, UserGuard, TestGuard, IslandsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

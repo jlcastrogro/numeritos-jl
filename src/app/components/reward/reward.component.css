@@ -8,6 +8,7 @@
 
 .game h1 {
   font-size: 60px;
+  text-shadow: #011f22 2px 2px;
 }
 
 .game .field {
@@ -59,7 +60,7 @@
   justify-content: space-around;
   cursor: pointer;
   height: 70px;
-  width: 100px;
+  width: 300px;
 }
 
 .game .field .gamezone .buttons button:hover {

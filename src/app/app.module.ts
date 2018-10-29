@@ -40,6 +40,8 @@ import {
   GameTemplate
 } from 'app/games';
 import { GameDirective } from 'app/directives/game.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   {
@@ -115,7 +117,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthService, UserGuard, TestGuard, IslandsGuard],
   bootstrap: [AppComponent]
